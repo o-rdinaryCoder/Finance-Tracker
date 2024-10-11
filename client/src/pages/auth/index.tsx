@@ -3,8 +3,6 @@ import {
   SignedOut,
   SignUpButton,
   SignInButton,
-  UserButton,
-  SignOutButton,
 } from "@clerk/clerk-react";
 import { Navigate } from "react-router-dom";
 
