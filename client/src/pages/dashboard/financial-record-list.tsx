@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import {
   FinancialRecord,
-  FinancialRecordsProvider,
   useFinancialRecords,
 } from "../../context/financial-record-context";
 import { useTable, Column, CellProps, Row } from "react-table";
