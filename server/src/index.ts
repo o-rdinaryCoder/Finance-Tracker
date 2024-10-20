@@ -25,4 +25,8 @@ mongoose
 
 app.use("/financial-records", financialRecordRouter);
 
+app.get("/", (req, res) => {
+  res.send("Hello, World! This is the root route.");
+});
+
 export default app; 
