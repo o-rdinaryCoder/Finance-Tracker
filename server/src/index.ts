@@ -25,6 +25,4 @@ mongoose
 
 app.use("/financial-records", financialRecordRouter);
 
-app.listen(port, ()=> {
-    console.log(`Server Running on PORT: ${port}`)
-})
+export default app; 
