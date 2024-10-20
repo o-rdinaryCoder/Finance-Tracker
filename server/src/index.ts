@@ -12,7 +12,7 @@ const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use(cors());
 
-const mongoURI = process.env.MONGO_URI;
+const mongoURI = process.env.MONGO_URI as string;
 
 if(!mongoURI) {
   throw new Error ('MONGO_URI is not defined');
