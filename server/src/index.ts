@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 import financialRecordRouter from "./routes/financial-records";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
 
-dotenv.config();
+dotenv.config({path: '.env.local'});
 
 const app: Express = express();
-const port = process.env.PORT || 3001;
+const port = Number(process.env.PORT) || 3001;
 
 app.use(express.json());
 app.use(cors());
@@ -23,10 +24,12 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Failed to Connect to MongoDB:", err));
 
-app.use("/financial-records", financialRecordRouter);
+app.use(express.static(path.join(__dirname, '../../client/dist')));  
 
-app.get("/", (req, res) => {
-  res.send("Hello, World! This is the root route.");
+app.use("/api/financial-records", financialRecordRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/dist', 'index.html'));
 });
 
-export default app; 
+app.listen(port, '0.0.0.0', ()=>{console.log(`Server Running on PORT: ${port}`)})
